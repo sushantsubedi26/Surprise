@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hey Boss 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Canvas layers -->
+<canvas id="bg-canvas"></canvas>
+<canvas id="heartTrail"></canvas>
+
+<!-- ════ PAGE 1 ════ -->
+<div id="page1" class="page">
+  <div class="card" style="text-align:center;">
+    <div class="sticker">✨ For You!</div>
+    <div class="emoji-float">🎀</div>
+    <h1 class="card-title">Hey! A Little<br>Surprise Awaits You</h1>
+    <p class="card-sub">I made something tiny & fun just for you.<br>Click below to unwrap it 💌</p>
+    <button class="btn-main" id="first-button">Let's Go! →</button>
+  </div>
+</div>
+
+<!-- ════ PAGE 2 ════ -->
+<div id="page2" class="page hidden">
+  <div class="card" style="text-align:center;">
+    <div class="emoji-float">🌸</div>
+    <h1 class="card-title">Wait — Are You<br>The One He Calls "Boss"?</h1>
+    <p class="card-sub">Don't overthink it!<br>You're as gorgeous as he describes 💌<br>Ready to continue?</p>
+    <button class="btn-main" id="second-button">Yes, That's Me →</button>
+  </div>
+</div>
+
+<!-- ════ PAGE 3: YES/NO ════ -->
+<div id="page3" class="page hidden">
+  <div class="card" id="thirdcard">
+    <div class="sticker">Important!!</div>
+    <!-- Heart progress -->
+    <div id="heart-progress">
+      <span class="hp">🤍</span>
+      <span class="hp">🤍</span>
+      <span class="hp">🤍</span>
+      <span class="hp">🤍</span>
+      <span class="hp">🤍</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.8rem;">
+      <div style="flex:1;">
+        <div class="emoji-float" style="font-size:2rem; text-align:left; margin-bottom:0.5rem;">👋</div>
+        <h1 class="card-title" style="text-align:left; font-size:1.5rem;">Hey Pretty Boss!</h1>
+        <p class="card-sub" id="p3-sub" style="text-align:left; margin-bottom:0;">Will you return to me?<br><span style="font-size:0.82rem; opacity:0.6;">Think carefully 😉</span></p>
+      </div>
+      <div style="flex-shrink:0;">
+        <img src="./boss.png" alt="boss" style="height:130px; width:110px; object-fit:cover; border-radius:16px; border:2px solid rgba(255,107,157,0.4); box-shadow:0 0 20px rgba(255,107,157,0.3);" onerror="this.style.display='none'"/>
+      </div>
+    </div>
+    <div id="button-container">
+      <button id="yesbutton">💖 Yes!</button>
+      <button id="nobutton">No...</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════ PAGE 4: FINAL ════ -->
+<div id="page4" class="page hidden">
+  <div class="card" id="lastcard" style="text-align:center;">
+    <img class="final-img" src="./image-removebg-preview (2).png" alt="" onerror="this.style.display='none'"/>
+    <h1 class="card-title" style="font-size:1.5rem;">Yay! Mission Accomplished! 😁</h1>
+    <p class="card-sub" style="margin-bottom:0.5rem;">Just for your smile 😊<br>Don't misunderstand!</p>
+    <p style="color:var(--pink-light); font-weight:700; font-size:0.95rem;">Thank you for being the best part of my life. #boss 💖</p>
+  </div>
+</div>
+
+<!-- ════ VIDEO PAGE ════ -->
+<div id="videopage" class="page hidden">
+  <div id="videocard">
+    <video loop autoplay muted playsinline src="./From Main Klickpin CF- Video Pinterest - 1PmRSmQz4.mp4"></video>
+  </div>
+</div>
+<script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+</body>
+</html>

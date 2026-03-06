@@ -1,0 +1,269 @@
+
+    :root {
+      --pink: #ff6b9d;
+      --pink-deep: #e0447a;
+      --pink-light: #ffb3d1;
+      --cream: #fff5f8;
+      --glow: rgba(255,107,157,0.5);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #0d0010;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      cursor: none;
+    }
+
+    /* ── CUSTOM CURSOR ── */
+   
+
+    /* ── CANVAS TRAIL ── */
+    #heartTrail { position:fixed; top:0; left:0; pointer-events:none; z-index:9997; }
+
+    /* ── BACKGROUND ── */
+    #bg-canvas { position:fixed; top:0; left:0; z-index:0; }
+
+    /* ── PAGES ── */
+    .page {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    .page.hidden { display: none; }
+
+    /* ── CARD BASE ── */
+    .card {
+      position: relative;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+      border: 1px solid rgba(255,107,157,0.35);
+      border-radius: 28px;
+      backdrop-filter: blur(20px);
+      padding: 2.5rem 2.8rem;
+      box-shadow:
+        0 0 40px rgba(255,107,157,0.2),
+        0 20px 60px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.15);
+      overflow: hidden;
+      max-width: 460px;
+      width: 90vw;
+    }
+    .card::before {
+      content:'';
+      position:absolute;
+      top:-60%; left:-40%;
+      width:180%; height:180%;
+      background: radial-gradient(ellipse at center, rgba(255,107,157,0.08) 0%, transparent 65%);
+      pointer-events:none;
+    }
+
+    /* ── CARD GLOW BORDER ANIMATION ── */
+    @keyframes borderGlow {
+      0%,100% { box-shadow: 0 0 20px rgba(255,107,157,0.3), 0 20px 60px rgba(0,0,0,0.5); }
+      50%      { box-shadow: 0 0 50px rgba(255,107,157,0.6), 0 20px 60px rgba(0,0,0,0.5), 0 0 80px rgba(255,107,157,0.2); }
+    }
+    .card { animation: borderGlow 3s ease-in-out infinite; }
+
+    /* ── TYPOGRAPHY ── */
+    .card-title {
+      font-family: 'Pacifico', cursive;
+      color: #fff;
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
+      text-align: center;
+      line-height: 1.4;
+      text-shadow: 0 0 20px var(--glow);
+      margin-bottom: 0.8rem;
+    }
+    .card-sub {
+      font-family: 'Nunito', sans-serif;
+      color: rgba(255,255,255,0.8);
+      font-size: 1rem;
+      text-align: center;
+      line-height: 1.7;
+      margin-bottom: 1.8rem;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-main {
+      display: block;
+      margin: 0 auto;
+      padding: 0.85rem 2.5rem;
+      background: linear-gradient(135deg, var(--pink), var(--pink-deep));
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      cursor: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(255,107,157,0.5);
+      letter-spacing: 0.5px;
+    }
+    .btn-main:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 30px rgba(255,107,157,0.7);
+    }
+    .btn-main:active { transform: scale(0.97); }
+
+    /* ── EMOJI DECORATION ── */
+    .emoji-float {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 0.6rem;
+      animation: emojiWobble 2s ease-in-out infinite;
+    }
+    @keyframes emojiWobble {
+      0%,100% { transform: rotate(-5deg) scale(1); }
+      50%      { transform: rotate(5deg) scale(1.15); }
+    }
+
+    /* ── PAGE 3: YES/NO ── */
+    #yesbutton, #nobutton {
+      padding: 0.75rem 1.8rem;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      border: none;
+      cursor: none;
+      transition: all 0.25s;
+    }
+    #yesbutton {
+      background: linear-gradient(135deg, #ff6b9d, #e0447a);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(255,107,157,0.5);
+      animation: pulseYes 1.6s ease-in-out infinite;
+    }
+    @keyframes pulseYes {
+      0%,100% { box-shadow: 0 4px 20px rgba(255,107,157,0.5); }
+      50%      { box-shadow: 0 4px 35px rgba(255,107,157,0.9), 0 0 0 6px rgba(255,107,157,0.15); }
+    }
+    #yesbutton:hover { transform: scale(1.08); }
+
+    #nobutton {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    #nobutton:hover { background: rgba(255,255,255,0.15); }
+
+    #button-container { display: flex; gap: 1rem; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 1.2rem; }
+
+    /* ── PROGRESS HEARTS ── */
+    #heart-progress {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 1rem;
+    }
+    .hp { font-size: 1.1rem; transition: all 0.3s; filter: grayscale(1) opacity(0.3); }
+    .hp.active { filter: none; animation: heartPop 0.4s cubic-bezier(0.17,0.89,0.32,1.49); }
+    @keyframes heartPop {
+      0% { transform: scale(0); }
+      60% { transform: scale(1.4); }
+      100% { transform: scale(1); }
+    }
+
+    /* ── SHAKE ── */
+    @keyframes shakeCard {
+      0%,100% { transform: translateX(0) rotate(0); }
+      15% { transform: translateX(-12px) rotate(-2deg); }
+      30% { transform: translateX(12px) rotate(2deg); }
+      45% { transform: translateX(-8px); }
+      60% { transform: translateX(8px); }
+      80% { transform: translateX(-4px); }
+    }
+    .shake { animation: shakeCard 0.5s ease; }
+
+    /* ── PAGE 4: FINAL ── */
+    #lastcard .final-img {
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid rgba(255,107,157,0.5);
+      box-shadow: 0 0 25px rgba(255,107,157,0.4);
+      display: block;
+      margin: 0 auto 1rem;
+      animation: floatImg 3s ease-in-out infinite;
+    }
+    @keyframes floatImg {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
+
+    /* ── VIDEO CARD ── */
+    #videocard {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 2px solid rgba(255,107,157,0.4);
+      box-shadow: 0 0 60px rgba(255,107,157,0.4);
+      width: min(320px, 85vw);
+      height: min(320px, 85vw);
+    }
+    #videocard video { width:100%; height:100%; object-fit:cover; }
+
+    /* ── FLOATING HEARTS BG ── */
+    .floatHeart {
+      position: fixed;
+      bottom: -2rem;
+      pointer-events: none;
+      z-index: 2;
+      animation: floatUp linear forwards;
+      font-size: 1.2rem;
+    }
+    @keyframes floatUp {
+      0%   { opacity:0; transform: translateY(0) scale(0.8) rotate(0deg); }
+      15%  { opacity: 0.9; }
+      100% { opacity:0; transform: translateY(-110vh) scale(1.3) rotate(30deg); }
+    }
+
+    /* ── TYPEWRITER ── */
+    .typewriter { border-right: 2px solid var(--pink); white-space: nowrap; overflow: hidden; }
+
+    /* ── STICKER BADGE ── */
+    .sticker {
+      position: absolute;
+      top: -14px; right: -14px;
+      background: linear-gradient(135deg, #ffcc02, #ff9500);
+      color: #000;
+      font-size: 0.6rem;
+      font-weight: 900;
+      padding: 4px 10px;
+      border-radius: 20px;
+      transform: rotate(12deg);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* ── CONFETTI PIECE ── */
+    .confetti-piece {
+      position: fixed;
+      pointer-events: none;
+      z-index: 10000;
+      border-radius: 2px;
+    }
+
+    /* ── RIPPLE ── */
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transform: scale(0);
+      animation: rippleOut 0.6s ease-out forwards;
+      pointer-events: none;
+    }
+    @keyframes rippleOut {
+      to { transform: scale(4); opacity: 0; }
+    }
+
+    /* ── NO BUTTON RUNWAY (escape) ── */
+    #nobutton { position: relative; }
